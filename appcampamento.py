@@ -2,21 +2,20 @@ import streamlit as st
 import psycopg2
 import pandas as pd
 
-# 1. FUNCIÓN DE CONEXIÓN A POSTGRESQL
+# 1. FUNCIÓN DE CONEXIÓN A POSTGRESQL (MÉTODO SEGURO)
 def get_connection():
     try:
         return psycopg2.connect(
-            user="postgres",
-            password="ALDOURIEL",
-            host="localhost",
-            port="5432",
-            database="CAMPAMENTO",
+            user=st.secrets["postgres"]["user"],
+            password=st.secrets["postgres"]["password"],
+            host=st.secrets["postgres"]["host"],
+            port=st.secrets["postgres"]["port"],
+            database=st.secrets["postgres"]["database"],
             client_encoding="utf8"
         )
     except Exception as e:
         st.error(f"Error de conexión a la base de datos: {e}")
         return None
-
 # Configuración inicial de la página
 st.set_page_config(page_title="Gestión Campamento de Verano", layout="wide")
 
