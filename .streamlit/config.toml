@@ -1,0 +1,15 @@
+[theme]
+# Botones
+primaryColor = "#B39DDB"
+
+# fondo
+backgroundColor = "#1C1A27"
+
+# sidebar
+secondaryBackgroundColor = "#2D293A"
+
+# texto
+textColor = "#FFFFFF"
+
+# Tipo de letra de la interfaz
+font = "sans serif"

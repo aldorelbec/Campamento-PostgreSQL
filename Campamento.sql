@@ -26,6 +26,7 @@ CREATE TABLE Monitor (
     MON_NOM     VARCHAR(60)     NOT NULL,
     MON_EXP     INTEGER         NOT NULL,
     GPO_CVE     INTEGER         NOT NULL,
+	MON_PWD     VARCHAR(60)     NOT NULL
     FOREIGN KEY (GPO_CVE) REFERENCES Grupo(GPO_CVE)
 );
 
@@ -137,13 +138,13 @@ INSERT INTO Tienda VALUES (7, 'Zona Central',          12);
 SELECT * FROM Tienda;
 
 -- MONITORES
-INSERT INTO Monitor VALUES ('PONS850312AB1', 'Carlos Ponce Solis',     5, 101);
-INSERT INTO Monitor VALUES ('FLOI900215CD2', 'Irvin Flores Pacheco',   3, 102);
-INSERT INTO Monitor VALUES ('MAYK950830EF3', 'Katerine Mayen Matinez', 7, 103);
-INSERT INTO Monitor VALUES ('BEAU001120GH4', 'Aldo Becerril Martinez', 2, 104);
-INSERT INTO Monitor VALUES ('ROLA870622IJ5', 'Laura Roque Alvarado',   9, 105);
-INSERT INTO Monitor VALUES ('GARM800101KL6', 'Mario Garcia Ruiz',      4, 101);
-INSERT INTO Monitor VALUES ('LONT781230MN7', 'Teresa Lopez Nieto',     6, 102);
+INSERT INTO Monitor VALUES ('PONS850312AB1', 'Carlos Ponce Solis',     5, 101, crypt('carlos123', gen_salt('bf', 8)));
+INSERT INTO Monitor VALUES ('FLOI900215CD2', 'Irvin Flores Pacheco',   3, 102, crypt('irvin456', gen_salt('bf', 8)));
+INSERT INTO Monitor VALUES ('MAYK950830EF3', 'Katerine Mayen Matinez', 7, 103, crypt('katerine123', gen_salt('bf', 8)));
+INSERT INTO Monitor VALUES ('BEAU001120GH4', 'Aldo Becerril Martinez', 2, 104, crypt('clave456', gen_salt('bf', 8))); 
+INSERT INTO Monitor VALUES ('ROLA870622IJ5', 'Laura Roque Alvarado',   9, 105, crypt('laura789', gen_salt('bf', 8)));
+INSERT INTO Monitor VALUES ('GARM800101KL6', 'Mario Garcia Ruiz',      4, 101, crypt('mario123', gen_salt('bf', 8)));
+INSERT INTO Monitor VALUES ('LONT781230MN7', 'Teresa Lopez Nieto',     6, 102, crypt('teresa456', gen_salt('bf', 8)));
 
 SELECT * FROM Monitor;
 
@@ -229,10 +230,12 @@ SELECT * FROM Subgrupo;
 --==============================================================================
 -- HISTORIAL DE MODIFICACIONES:
 -- -----------------------------------------------------------------------------
--- Fecha       | Versión | Autor       | Descripción del Cambio
+-- Fecha       | Versión | Autor                      | Descripción del Cambio
 -- -----------------------------------------------------------------------------
 -- 09/05/2026  |  1.2   | Dalia Ponce Solís           | Creación inicial del DDL 
 --                        Irving Uriel Flores Pacheco    e inserciones básicas.
+-- 09/05/2026  |  1.3   | Aldo Uriel Becerril Martinez| Cambios requeridos por el profesor
+
 
 -- ============================================================
 -- ROLLBACK
